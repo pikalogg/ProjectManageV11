@@ -6,14 +6,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -36,6 +39,8 @@ public class DashboardActivity extends AppCompatActivity {
     List<Project> projects_da;
     ProjectAdapter projectAdapter_dang;
     ProjectAdapter projectAdapter_da;
+
+    boolean inDang = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void addControl(){
         actionBar = getSupportActionBar();
-        actionBar.setTitle("Home");
+        actionBar.setTitle("Pika Team");
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_option_n);
 
@@ -65,6 +70,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 listView.setAdapter(projectAdapter_da);
                 l_tmp.setGravity(Gravity.RIGHT);
+                inDang = false;
             }
         });
         btn_dang.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +79,8 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 listView.setAdapter(projectAdapter_dang);
                 l_tmp.setGravity(Gravity.LEFT);
+                inDang = true;
+                Log.d(WALLPAPER_SERVICE, "onClick: da hoan thanh");
             }
         });
     }
@@ -104,5 +112,24 @@ public class DashboardActivity extends AppCompatActivity {
         projectAdapter_dang = new ProjectAdapter(projects_dang , getApplicationContext());
         projectAdapter_da = new ProjectAdapter(projects_da , getApplicationContext());
         listView.setAdapter(projectAdapter_dang);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(DashboardActivity.this, ProjectActivity.class);
+                if(inDang){
+                    intent.putExtra("namePro", projects_dang.get(i).getTitle());
+                } else {
+                    intent.putExtra("namePro", projects_da.get(i).getTitle());
+                }
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
     }
 }

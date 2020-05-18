@@ -43,10 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case android.R.id.home:
-//                onBackPressed(); //nut quay lai cua dien thoai
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                onBackPressed(); //nut quay lai cua dien thoai
                 return true;
 
             default:break;
@@ -54,4 +51,14 @@ public class LoginActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //nut back dt
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
