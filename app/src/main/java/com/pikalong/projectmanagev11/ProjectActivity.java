@@ -11,6 +11,7 @@ package com.pikalong.projectmanagev11;
         import android.view.MenuItem;
         import android.view.View;
         import android.widget.AdapterView;
+        import android.widget.ImageButton;
         import android.widget.LinearLayout;
         import android.widget.ListView;
         import android.widget.Switch;
@@ -33,7 +34,7 @@ public class ProjectActivity extends AppCompatActivity {
     TextView btn_gv, btn_dl, btn_kt, btn_ht;
     LinearLayout l_tmp, l_tmp2;
 
-
+    List<Task> tasks;
     List<Task> tasks_gv;
     List<Task> tasks_dl;
     List<Task> tasks_kt;
@@ -43,6 +44,7 @@ public class ProjectActivity extends AppCompatActivity {
     TaskAdapter taskAdapter_kt;
     TaskAdapter taskAdapter_ht;
 
+    ImageButton btn_add;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,8 @@ public class ProjectActivity extends AppCompatActivity {
 
         l_tmp = findViewById(R.id.l_tmp);
         l_tmp2 = findViewById(R.id.l_tmp2);
+
+        btn_add = findViewById(R.id.btn_add);
 
     }
     private void addEvent(){
@@ -106,21 +110,55 @@ public class ProjectActivity extends AppCompatActivity {
                 in = 3;
             }
         });
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProjectActivity.this, AddTaskActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private  void addData(){
+        tasks = new ArrayList<>();
+        //gv
+        tasks.add(new Task("công việc cao cả", "đứng im một chỗ"));
+        tasks.add(new Task("công việc bần hàn", "đi qua đi lại"));
+        tasks.add(new Task());
+        tasks.add(new Task());
+        //dl
+        tasks.add(new Task("Kiểm tra chính tả", "Bạn sửa lỗi, nhưng bạn đã mất mạch ý tưởng. Để tránh sự ngắt quãng đó, bạn có thể tắt kiểm tra chính tả, rồi kiểm tra chính tả bằng cách thủ công khi bạn đã viết xong. Đây là cách thực hiện.", 1));
+        tasks.add(new Task("Làm slide thuyết trính", "Ngay trong PowerPoint có rất nhiều mẫu theme, hình nền PowerPoint để chúng ta lựa chọn. Mỗi một hình nền đều theo nhiều chủ đề khác nhau, bạn nên lựa chọn hình nền phù hợp với nội dung cũng như đối tượng trình chiếu.", 1));
+        //kt
+        tasks.add(new Task("Mẫu để kiểm tra", "không làm gì", 2));
+        //ht
+        tasks.add(new Task("Mẫu hoàn thành","không làm gì", 3));
+
         tasks_gv = new ArrayList<>();
-        tasks_gv.add(new Task("công việc cao cả", "đứng im một chỗ"));
-        tasks_gv.add(new Task("công việc bần hàn", "đi qua đi lại"));
-        tasks_gv.add(new Task());
-
         tasks_dl = new ArrayList<>();
-        tasks_dl.add(new Task());
-
         tasks_kt = new ArrayList<>();
-        tasks_kt.add(new Task("Cái này cần kiểm tra nha", "Biểu mẫu trên đây mang tính tham khảo, quý khách hàng nên tham khảo ý kiến tư vấn của luật sư hoặc tìm hiểu thêm quy định pháp luật tại thời điểm áp dụng, Nếu còn vướng mắc"));
-
         tasks_ht = new ArrayList<>();
+
+        for (int i=0;i<tasks.size();i++){
+            Task task = tasks.get(i);
+            switch (task.getStatus()){
+                case 0:
+                    tasks_gv.add(task);
+                    break;
+                case 1:
+                    tasks_dl.add(task);
+                    break;
+                case 2:
+                    tasks_kt.add(task);
+                    break;
+                case 3:
+                    tasks_ht.add(task);
+                    break;
+                default:
+                    break;
+            }
+        }
 
         taskAdapter_gv = new TaskAdapter(tasks_gv, getApplicationContext());
         taskAdapter_dl = new TaskAdapter(tasks_dl, getApplicationContext());
