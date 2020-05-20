@@ -9,7 +9,7 @@ public class Project {
         this.tasks = null;
         this.title = "Tên dự án";
         this.des = "Mô tả chi tiết";
-        this.imgLink = "http:pi";
+        this.imgLink = "http://pi";
     }
     public Project(String title, String des) {
         this.tasks = null;

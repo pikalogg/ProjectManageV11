@@ -19,8 +19,6 @@
         <activity android:name=".AddTaskActivity" />
         <activity android:name=".AddProjectActivity" />
         <activity android:name=".ProjectActivity" />
-        <activity android:name=".RowTaskActivity" />
-        <activity android:name=".RowProjectActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".ProfileActivity" />

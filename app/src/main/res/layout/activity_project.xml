@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -32,7 +33,7 @@
             android:textAlignment="center"
             android:textSize="16sp" />
         <TextView
-            android:id="@+id/btn_cho"
+            android:id="@+id/btn_kiemtra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -58,26 +59,34 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:layout_alignBottom="@+id/l_select"
-        android:weightSum="4"
+        android:weightSum="2"
         android:orientation="horizontal">
-
-        <View
-            android:id="@+id/view_tmp1"
+        <LinearLayout
+            android:id="@+id/l_tmp2"
             android:layout_width="0dp"
-            android:layout_height="3dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#777373" />
+            android:weightSum="2"
+            android:gravity="left"
+            tools:ignore="InvalidId,Suspicious0dp">
+            <View
+                android:id="@+id/view_tmp1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_weight="1"
+                android:background="#777373" />
+        </LinearLayout>
 
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/l_select"
-        android:background="@color/colorGrey"
+        android:background="#F4F4F4"
         android:layout_marginTop="0dp">
 
         <ListView
-            android:id="@+id/listview"
+            android:id="@+id/lv_conten"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

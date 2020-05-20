@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -34,6 +35,7 @@ public class DashboardActivity extends AppCompatActivity {
     TextView btn_dang, btn_da;
     ListView listView;
     LinearLayout l_tmp;
+    ImageButton btn_add;
 
     List<Project> projects_dang;
     List<Project> projects_da;
@@ -62,6 +64,8 @@ public class DashboardActivity extends AppCompatActivity {
         btn_dang = findViewById(R.id.btn_dang);
         listView = findViewById(R.id.listview);
         l_tmp = findViewById(R.id.l_tmp);
+
+        btn_add = findViewById(R.id.btn_add);
     }
     private void addEvent(){
         btn_da.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +85,14 @@ public class DashboardActivity extends AppCompatActivity {
                 l_tmp.setGravity(Gravity.LEFT);
                 inDang = true;
                 Log.d(WALLPAPER_SERVICE, "onClick: da hoan thanh");
+            }
+        });
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, AddProjectActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
@@ -130,6 +142,6 @@ public class DashboardActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
+        super.onBackPressed();
     }
 }
