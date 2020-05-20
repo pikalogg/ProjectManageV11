@@ -53,8 +53,6 @@ public class AddProjectActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        Intent intent = new Intent(AddProjectActivity.this, DashboardActivity.class);
-        startActivity(intent);
         finish();
     }
 }

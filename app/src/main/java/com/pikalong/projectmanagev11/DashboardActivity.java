@@ -92,7 +92,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(DashboardActivity.this, AddProjectActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
     }
@@ -135,7 +135,7 @@ public class DashboardActivity extends AppCompatActivity {
                     intent.putExtra("namePro", projects_da.get(i).getTitle());
                 }
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
     }

@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
     ActionBar actionBar;
     Button btn_login;
+
+    TextView not_have_account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.setTitle("Đăng nhập");
 
         btn_login = findViewById(R.id.btn_login);
-
+        not_have_account = findViewById(R.id.not_have_account);
     }
     private void addEvent(){
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +37,13 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+        not_have_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -56,8 +66,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
         finish();
     }
 

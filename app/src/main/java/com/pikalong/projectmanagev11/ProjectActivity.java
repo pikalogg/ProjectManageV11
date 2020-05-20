@@ -115,7 +115,7 @@ public class ProjectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ProjectActivity.this, AddTaskActivity.class);
                 startActivity(intent);
-                finish();
+//                finish();
             }
         });
     }
@@ -222,8 +222,6 @@ public class ProjectActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        Intent intent = new Intent(ProjectActivity.this, DashboardActivity.class);
-        startActivity(intent);
         finish();
     }
 }
