@@ -4,11 +4,12 @@ import java.sql.Time;
 
 public class Task {
 
-    String name, time, title, des, av_link;
+    String name, nameSu, time, title, des, av_link;
     int status;
 
     public Task() {
         this.name = "Người giao việc";
+        nameSu = "Người hoàn thành";
         this.time = "now";
         this.title = "Công việc mới";
         this.des = "Đừng làm gì hết, chờ chỉ thị khác đi";
@@ -18,6 +19,7 @@ public class Task {
 
     public Task(String title, String des, int status) {
         this.title = title;
+        nameSu = "Người hoàn thành";
         this.des = des;
         this.name = "Người giao việc";
         this.time = "now";
@@ -27,6 +29,7 @@ public class Task {
 
     public Task(String name, String time, String title, String des, String av_link) {
         this.name = name;
+        nameSu = "Người hoàn thành";
         this.time = time;
         this.title = title;
         this.des = des;
@@ -37,10 +40,15 @@ public class Task {
     public Task(String title, String des) {
         this.name = "Người giao việc";
         this.time = "now";
+        nameSu = "Người hoàn thành";
         this.title = title;
         this.des = des;
         this.av_link = "http://av_link";
         status = 0;
+    }
+
+    public void setNameSu(String nameSu) {
+        this.nameSu = nameSu;
     }
 
     public void setStatus(int status) {
@@ -65,6 +73,10 @@ public class Task {
 
     public void setAv_link(String av_link) {
         this.av_link = av_link;
+    }
+
+    public String getNameSu() {
+        return nameSu;
     }
 
     public int getStatus() {

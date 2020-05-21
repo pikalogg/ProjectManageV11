@@ -4,8 +4,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4F4F4"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/l_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DEECF4"
+        android:orientation="horizontal">
 
+        <TextView
+            android:id="@+id/btn_dang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="Nội dung"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/btn_da"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:text="Tin nhắn"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l_tmp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:layout_alignBottom="@+id/l_select"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_tmp1"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="#777373" />
+
+    </LinearLayout>
     <LinearLayout
         android:weightSum="10"
         android:layout_width="match_parent"
@@ -42,12 +87,12 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tv_name"
+                            android:id="@+id/tv_nameSu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#2D2D2D"
                             android:textSize="14sp"
-                            android:text="Người giao việc"/>
+                            android:text=""/>
 
                         <TextView
                             android:id="@+id/tv_time"
@@ -59,110 +104,30 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/l_namePro"
+                    android:id="@+id/l_des"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/l_name"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/tv_des"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tiêu đề công việc"
+                        android:text=""
                         android:textColor="#6C6C6C"
                         android:textSize="12sp" />
-                    <EditText
-                        android:id="@+id/ed_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Nhập tiêu đề"
-                        android:inputType="textPersonName"
-                        android:textColor="#322F2F"
-                        android:textSize="12sp" />
-
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/l_desPro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/l_namePro"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:textColor="#6C6C6C"
-                        android:text="Nội dung công việc" />
-
-                    <EditText
-                        android:id="@+id/ed_des"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="Nhập nội dung"
-                        android:textColor="#322F2F"
-                        android:textSize="12sp"
-                        android:gravity="start|top"
-                        android:inputType="textMultiLine"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/l_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/l_desPro"
-                    android:layout_marginTop="40dp"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Công việc dành cho" />
-
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="8"
-                        android:alignmentMode="alignMargins"
-                        android:columnCount="3"
-                        android:padding="4dp">
-
-                        <LinearLayout
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/rounded_edge">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="volocanh" />
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                app:srcCompat="@drawable/circled_x" />
 
 
-                        </LinearLayout>
-                    </GridLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.3dp"
-                        android:background="@color/colorPrimaryDark" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/l_fileImg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/l_tv"
-                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/l_des"
+                    android:layout_marginTop="40dp"
                     android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
@@ -176,23 +141,20 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:minHeight="70dp"
+                        android:background="#ffffff"
                         android:layout_height="wrap_content">
 
-                        <ScrollView
+                        <GridLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <GridLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="#ffffff"
-                                android:columnCount="3"></GridLayout>
-                        </ScrollView>
+                            android:layout_height="match_parent"
+
+                            android:columnCount="3"></GridLayout>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:gravity="center"
-                            android:text="Nhấn để thêm ảnh"
+                            android:text="Không có hình ảnh nào"
                             android:textAlignment="center" />
                     </RelativeLayout>
 
@@ -217,23 +179,20 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:minHeight="70dp"
+                        android:background="#ffffff"
                         android:layout_height="wrap_content">
 
-                        <ScrollView
+                        <GridLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <GridLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="#ffffff"
-                                android:columnCount="5"></GridLayout>
-                        </ScrollView>
+                            android:layout_height="match_parent"
+
+                            android:columnCount="5"></GridLayout>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:gravity="center"
-                            android:text="Nhấn để thêm file"
+                            android:text="Không có file nào"
                             android:textAlignment="center" />
                     </RelativeLayout>
 
@@ -250,16 +209,25 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
-
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_y"
                 android:layout_width="296dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:textSize="17sp"
                 android:textColor="#ffffff"
                 android:background="#3F51B5"
-                android:text="Tạo công việc" />
+                android:layout_marginBottom="20dp"
+                android:text="Xác nhận bàn giao" />
+            <Button
+                android:id="@+id/button_n"
+                android:layout_width="296dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:background="#FB0202"
+                android:text="Yêu cầu làm lại" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

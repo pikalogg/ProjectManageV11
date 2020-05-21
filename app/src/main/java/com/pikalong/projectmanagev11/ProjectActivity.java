@@ -131,9 +131,14 @@ public class ProjectActivity extends AppCompatActivity {
         tasks.add(new Task("Kiểm tra chính tả", "Bạn sửa lỗi, nhưng bạn đã mất mạch ý tưởng. Để tránh sự ngắt quãng đó, bạn có thể tắt kiểm tra chính tả, rồi kiểm tra chính tả bằng cách thủ công khi bạn đã viết xong. Đây là cách thực hiện.", 1));
         tasks.add(new Task("Làm slide thuyết trính", "Ngay trong PowerPoint có rất nhiều mẫu theme, hình nền PowerPoint để chúng ta lựa chọn. Mỗi một hình nền đều theo nhiều chủ đề khác nhau, bạn nên lựa chọn hình nền phù hợp với nội dung cũng như đối tượng trình chiếu.", 1));
         //kt
-        tasks.add(new Task("Mẫu để kiểm tra", "không làm gì", 2));
+        Task tmp1 = new Task("Mẫu để kiểm tra", "không làm gì", 2);
+        tmp1.setNameSu("Vũ Thị Ngọc Lê");
+        tasks.add(tmp1);
+
         //ht
-        tasks.add(new Task("Mẫu hoàn thành","không làm gì", 3));
+        Task tmp2 = new Task("Mẫu để kiểm tra hoàn thành", "không làm gì", 3);
+        tmp2.setNameSu("Vũ Thị Ngọc Lê");
+        tasks.add(tmp2);
 
         tasks_gv = new ArrayList<>();
         tasks_dl = new ArrayList<>();
@@ -169,22 +174,37 @@ public class ProjectActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent myIntent = null;
                 switch (in){
                     case 0:
-
+                        myIntent = new Intent(ProjectActivity.this, GiveTaskActivity.class);
+                        myIntent.putExtra("name", tasks_gv.get(i).getName());
+                        myIntent.putExtra("title", tasks_gv.get(i).getTitle());
+                        myIntent.putExtra("des", tasks_gv.get(i).getDes());
                         break;
                     case 1:
-
+                        myIntent = new Intent(ProjectActivity.this, DeployingTaskActivity.class);
+                        myIntent.putExtra("name", tasks_dl.get(i).getName());
+                        myIntent.putExtra("title", tasks_dl.get(i).getTitle());
+                        myIntent.putExtra("des", tasks_dl.get(i).getDes());
                         break;
                     case 2:
-
+                        myIntent = new Intent(ProjectActivity.this, InspectTaskActivity.class);
+                        myIntent.putExtra("name", tasks_kt.get(i).getNameSu());
+                        myIntent.putExtra("title", tasks_kt.get(i).getTitle());
+                        myIntent.putExtra("des", tasks_kt.get(i).getDes());
                         break;
                     case 3:
-
+                        myIntent = new Intent(ProjectActivity.this, SuccessfulTaskActivity.class);
+                        myIntent.putExtra("name", tasks_ht.get(i).getNameSu());
+                        myIntent.putExtra("title", tasks_ht.get(i).getTitle());
+                        myIntent.putExtra("des", tasks_ht.get(i).getDes());
                         break;
                     default:
                         break;
                 }
+                myIntent.putExtra("namePro", intent.getStringExtra("namePro"));
+                startActivity(myIntent);
             }
         });
     }
