@@ -10,7 +10,7 @@
     <item
         android:id="@+id/action_delete"
         android:orderInCategory="100"
-        android:title="Xóa bỏ"
+        android:title="Hủy dự án (xóa)"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_return"

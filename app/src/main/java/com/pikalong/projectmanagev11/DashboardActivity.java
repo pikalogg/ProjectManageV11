@@ -1,41 +1,45 @@
 package com.pikalong.projectmanagev11;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.accessibilityservice.AccessibilityService;
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.AdaptiveIconDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.pikalong.projectmanagev11.adapter.ProjectAdapter;
 import com.pikalong.projectmanagev11.model.Project;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardActivity extends AppCompatActivity {
+import static com.pikalong.projectmanagev11.R.string.open;
+
+public class DashboardActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     ActionBar actionBar;
     TextView btn_dang, btn_da;
     ListView listView;
     LinearLayout l_tmp;
     ImageButton btn_add;
+    DrawerLayout drawer;
+    ActionBarDrawerToggle drawerToggle;
+
+    
 
     List<Project> projects_dang;
     List<Project> projects_da;
@@ -43,11 +47,15 @@ public class DashboardActivity extends AppCompatActivity {
     ProjectAdapter projectAdapter_da;
 
     boolean inDang = true;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav);
+        navigationView.setNavigationItemSelectedListener(this);
         addControl();
         addEvent();
         addData();
@@ -66,6 +74,10 @@ public class DashboardActivity extends AppCompatActivity {
         l_tmp = findViewById(R.id.l_tmp);
 
         btn_add = findViewById(R.id.btn_add);
+        drawer = findViewById(R.id.drawer);
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, open, R.string.close);
+        drawer.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
     }
     private void addEvent(){
         btn_da.setOnClickListener(new View.OnClickListener() {
@@ -95,13 +107,19 @@ public class DashboardActivity extends AppCompatActivity {
 //                finish();
             }
         });
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
         {
+            case android.R.id.home:
+                if(drawerToggle.onOptionsItemSelected(item))
+                    return true;
+            case R.id.action_file:
 
+                return  true;
             default:break;
         }
 
@@ -143,5 +161,18 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.item_pi1: {
+                Toast.makeText(this,"pika", Toast.LENGTH_SHORT).show();
+                break;
+            }
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

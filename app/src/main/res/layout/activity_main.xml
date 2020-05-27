@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
-                android:text="ID 17020865"
+                android:text="ID: ??????????"
                 android:textAlignment="center" />
         </LinearLayout>
 

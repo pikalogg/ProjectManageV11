@@ -6,6 +6,7 @@ package com.pikalong.projectmanagev11;
         import android.annotation.SuppressLint;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.Gravity;
         import android.view.Menu;
         import android.view.MenuItem;
@@ -227,11 +228,14 @@ public class ProjectActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed(); //nut quay lai cua dien thoai
                 return true;
+            case R.id.action_file:
+                btn_gv.setText("pika");
+                return true;
             case R.id.action_delete:
 
                 return true;
             case R.id.action_return:
-
+//
                 return true;
             default:
                 break;
